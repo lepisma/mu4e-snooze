@@ -1,12 +1,8 @@
 #+TITLE: mu4e-snooze
 
 Snooze feature for [[https://www.djcbsoftware.nl/code/mu/mu4e.html][mu4e]]. Allows for day level granularity right now.
-* Development Notes
-:PROPERTIES:
-:CREATED:  [2023-04-24 Mon 11:54]
-:END:
 
-+ Gave me shell script
-+ Asked for emacs lisp.
-+ Had to correct for reading message from file.
-+ Had to ask to sync db post operation.
+Another motivation for working on this project was to figure out capabilities of
+GPT-4. For that, I tried co-programming with ChatGPT running on GPT-4. At some
+point I stopped. Log of my interaction is kept in ~devlog.md~. A more detailed
+review is going to come in my blog.
