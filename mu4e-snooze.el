@@ -34,12 +34,20 @@
 (require 'mu4e)
 (require 'mu4e-meta)
 
-(defcustom mu4e-snooze-label "[mu4e]/snoozed"
+(defcustom mu4e-snooze-label "[mu4e].snoozed"
   "Label to use for filing snoozed emails."
   :type 'string)
 
-(defun mu4e-snooze--create-label ()
-  "Create snooze label in the server.")
+(defcustom mu4e-snooze-root-dir (expand-file-name "~/Maildir")
+  "Root path for all maildir operation. This is temporary as we
+will be using information from mu4e itself."
+  :type 'string)
+
+(defun mu4e-snooze--create-labels ()
+  "For all the top level inboxes, create mu4e snooze label."
+  (mapcar (lambda (ctx)
+            (f-mkdir mu4e-snooze-root-dir (mu4e-context-name ctx) mu4e-snooze-label))
+          mu4e-contexts))
 
 (defun mu4e-snooze ()
   "Snooze a message until the selected date."
