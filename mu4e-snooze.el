@@ -4,7 +4,7 @@
 
 ;; Author: Abhinav Tushar <abhinav@lepisma.xyz>
 ;; Version: 0.0.1
-;; Package-Requires: ((emacs "28"))
+;; Package-Requires: ((emacs "28") (org "9.6.4"))
 ;; Keywords: 
 ;; URL: https://github.com/lepisma/mu4e-snooze
 
@@ -48,6 +48,9 @@
   "Header where snooze time is stored. Note that tools like
 offlineimap don't sync these and so you will have trouble working
 with mu4e on multiple machines.")
+
+(defvar mu4e-snooze-timer nil
+  "Variable to keep timer for unsnooze function call.")
 
 (defun mu4e-snooze-folder (msg)
   "Return snooze folder for `msg'."
@@ -137,7 +140,7 @@ has passed."
                       :action ,#'mu4e-snooze-action))
 
 (define-key mu4e-headers-mode-map (kbd "z") 'mu4e-snooze)
-(run-at-time nil mu4e-snooze-unsnooze-timer 'mu4e-snooze-process-snoozed)
+(setq mu4e-snooze-timer (run-at-time nil mu4e-snooze-unsnooze-timer 'mu4e-snooze-process-snoozed))
 
 (provide 'mu4e-snooze)
 
