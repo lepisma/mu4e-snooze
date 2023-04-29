@@ -1,8 +1,24 @@
 #+TITLE: mu4e-snooze
 
-Snooze feature for [[https://www.djcbsoftware.nl/code/mu/mu4e.html][mu4e]]. Allows for day level granularity right now.
+Snooze feature for [[https://www.djcbsoftware.nl/code/mu/mu4e.html][mu4e]].
 
-Another motivation for working on this project was to figure out capabilities of
-GPT-4. For that, I tried co-programming with ChatGPT running on GPT-4. At some
-point I stopped. Log of my interaction is kept in ~devlog.md~. A more detailed
-review is going to come in my blog.
+Other than me starting to use snoozing a lot, a motivation for working on this
+project was to figure out capabilities of GPT-4. For that, I tried
+co-programming the project with ChatGPT running on GPT-4. At some point I
+stopped. Log of my interaction is kept in ~devlog.md~. A more detailed review is
+going to come in my blog.
+
+** Usage
+After installation, you will be able to mark and snooze emails by using the ~z~
+key. You can do bulk snoozing. At the time of mark execution, you will be asked
+the unsnooze time. You can provide exact datetime or relative. See documentation
+of ~org-read-date~ for details on acceptable format.
+
+Snoozing works by moving the marked emails in ~mu4e-snooze-label~ folder and add
+an X-header to keep the unsnooze time. Since tools like offlineimap won't sync
+the added X-header, you will face minor annoyance in using ~mu4e-snooze~ across
+multiple machines.
+
+A timer starts with a default interval of 5 mins (change
+~mu4e-snooze-unsnoze-timer~ variable for this) to check whether any email should
+be unsnoozed to relevant INBOX.
