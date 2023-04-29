@@ -133,14 +133,15 @@ has passed."
   (interactive)
   (mu4e-headers-mark-and-next 'snooze))
 
-(add-to-list 'mu4e-marks
-             `(snooze :char "z"
-                      :prompt "snooze"
-                      :dyn-target (lambda (target msg) (mu4e-snooze-folder msg))
-                      :action ,#'mu4e-snooze-action))
+(with-eval-after-load 'mu4e
+  (add-to-list 'mu4e-marks
+               `(snooze :char "z"
+                        :prompt "snooze"
+                        :dyn-target (lambda (target msg) (mu4e-snooze-folder msg))
+                        :action ,#'mu4e-snooze-action))
 
-(define-key mu4e-headers-mode-map (kbd "z") 'mu4e-snooze)
-(setq mu4e-snooze-timer (run-at-time nil mu4e-snooze-unsnooze-timer 'mu4e-snooze-process-snoozed))
+  (define-key mu4e-headers-mode-map (kbd "z") 'mu4e-snooze)
+  (setq mu4e-snooze-timer (run-at-time nil mu4e-snooze-unsnooze-timer 'mu4e-snooze-process-snoozed)))
 
 (provide 'mu4e-snooze)
 
