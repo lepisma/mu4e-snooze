@@ -6,7 +6,7 @@ Other than me starting to use snoozing a lot, a motivation for working on this
 project was to figure out capabilities of GPT-4. For that, I tried
 co-programming the project with ChatGPT running on GPT-4. At some point I
 stopped. Log of my interaction is kept in ~devlog.md~. A more detailed review is
-going to come in my blog.
+in my blog post [[https://lepisma.xyz/2023/06/29/mu4e-snooze/index.html][here]]. An update from September 2024 using the o1 model is [[https://lepisma.xyz/2024/09/13/mu4e-snooze-with-o1-preview/index.html][here]].
 
 ** Usage
 After installation, you will be able to mark and snooze emails by using the ~z~
